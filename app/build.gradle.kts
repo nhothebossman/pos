@@ -1,11 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.ksp)
 
-    alias(libs.plugins.ksp) // Add the KSP plugin
-
-
-    kotlin("android")
-    kotlin("kapt")
 }
 
 android {
@@ -18,7 +16,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -55,7 +52,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -74,11 +70,12 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.navigation.compose)
     implementation(libs.room.runtime)
-    implementation(libs.room.ktx) // For Room coroutines support
-    ksp(libs.room.compiler) // Use KSP instead of KAPT for Room
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
     implementation(libs.camerax.view)
     implementation(libs.camerax.lifecycle)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.material.icons.extended)
 }
